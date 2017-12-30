@@ -1,26 +1,16 @@
 const express = require('express');
 const hbs = require('hbs');
+const configureViewEngine = require('./app/configureViewEngine');
+const serveStatic = require('./app/serveStatic');
+const logger = require('./middleware/logger');
 
 const app = express();
+app.use(logger);
 
-app.set('view engine', 'hbs');
+configureViewEngine(app, hbs);
+serveStatic(app);
 
-const staticFileTypes = [
-  'css',
-  'js',
-  'img'
-];
-
-function serveStaticFiles(dirNames) {
-  dirNames.forEach((dirName) => {
-    app.use(`/${dirName}`, express.static(`${__dirname}/public/${dirName}`));
-  });
-};
-
-serveStaticFiles(staticFileTypes);
-
-app.get('/', (req, res) => {
-  res.render('home');
-});
+app.get('/', (req, res) => res.render('home'));
+app.get('/about', (req, res) => res.render('about'));
 
 app.listen(3001, () => console.log('your app is listening on port 3001'));
