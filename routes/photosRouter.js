@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const {
   getPhotosInfo,
-  getPhotosInfoById
+  getPhotoInfoById
 } = require('../app/getPhotoUrls');
 
 router.get('/', (req, res) => {
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 router.use('/:photo_id', (req, res) => {
   const { location, photo_id } = req.params;
 
-  getPhotosInfoById(location, photo_id)
+  getPhotoInfoById(location, photo_id)
     .then((photoInfo) => {
       res.render('photo', {
         locationName: location,

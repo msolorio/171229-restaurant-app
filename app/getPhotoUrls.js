@@ -24,7 +24,7 @@ function getPhotosInfo(location) {
     .catch((error) => error);
 }
 
-function getPhotosInfoById(location, photoId) {
+function getPhotoInfoById(location, photoId) {
   return getPhotoUrlsByLocation(location)
     .then((photoUrls) => {
       const url = photoUrls.find((url, index) => index === parseInt(photoId));
@@ -41,5 +41,5 @@ function getPhotosInfoById(location, photoId) {
 module.exports = {
   getPhotoUrlsByLocation,
   getPhotosInfo,
-  getPhotosInfoById
+  getPhotoInfoById
 };
