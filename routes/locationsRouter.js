@@ -7,7 +7,8 @@ const { checkLocationParams } = require('../middleware/checkParams');
 router.get('/:location', checkLocationParams, (req, res, next) => {
   res.render('location', {
     locationName: req.params.location,
-    mainContent: () => `content_${req.params.location}`
+    // returns name of the partial pulled in for location main content
+    locationContent: () => `location_${req.params.location}`
   });
 });
 
