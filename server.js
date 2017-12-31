@@ -6,10 +6,11 @@ const logger = require('./middleware/logger');
 const indexRouter = require('./routes');
 
 const app = express();
-app.use(logger);
 
 configureViewEngine(app, hbs);
 serveStatic(app);
+
+app.use(logger);
 
 app.use(indexRouter);
 
