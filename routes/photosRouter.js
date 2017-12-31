@@ -9,10 +9,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/:photo_id', (req, res) => {
-  // TODO: call method to get photo content
-  // call res.render only if photo exists and content comes back
-  // otherwise should redirect home
-
   res.render('photo', {
     photoId: req.params.photo_id
   });
