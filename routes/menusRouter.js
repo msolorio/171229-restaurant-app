@@ -8,7 +8,8 @@ const {
 router.get('/:menu', checkLocationParams, checkMenuParams, (req, res) => {
   res.render('menu', {
     locationName: req.params.location,
-    menuType: req.params.menu
+    menuType: req.params.menu,
+    menuContent: () => `menu_${req.params.location}_${req.params.menu}`
   });
 });
 
