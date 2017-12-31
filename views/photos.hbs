@@ -5,7 +5,15 @@
 
 {{> locationSidebar}}
 
-<p>photos: {{photos}}</p>
+<h3>Photos</h3>
+
+<div>
+  {{#each photos}}
+  <img src="/img/locations/{{locationName}}/{{file}}" id="{{index}}"
+    alt="{{file}}"
+    title="{{file}}" />
+  {{/each}}
+</div>
 
 
 {{> footer}}
