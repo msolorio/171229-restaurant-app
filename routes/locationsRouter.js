@@ -4,8 +4,6 @@ const menusRouter = require('./menusRouter');
 const photosRouter = require('./photosRouter');
 const { checkLocationParams } = require('../middleware/checkParams');
 
-
-
 router.get('/:location', checkLocationParams, (req, res, next) => {
   res.render('location', {
     locationName: req.params.location,
