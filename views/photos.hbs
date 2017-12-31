@@ -9,9 +9,11 @@
 
 <div>
   {{#each photos}}
-  <img src="/img/locations/{{locationName}}/{{file}}" id="{{index}}"
-    alt="{{file}}"
-    title="{{file}}" />
+  <a href="/locations/{{locationName}}/photos/{{photoId}}">
+    <img src="/img/locations/{{locationName}}/{{file}}" id="{{photoId}}"
+      alt="{{file}}"
+      title="{{file}}" />
+  </a>
   {{/each}}
 </div>
 

@@ -5,7 +5,11 @@
 
 {{> locationSidebar}}
 
-<p>photo id: {{photoId}}</p>
-
+{{#photo}}
+<img src="/img/locations/{{locationName}}/{{file}}"
+  id="{{photoId}}"
+  alt="{{file}}"
+  title="{{file}}" />
+{{/photo}}
 
 {{> footer}}
