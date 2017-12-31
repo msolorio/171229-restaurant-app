@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Lupita's</title>
-  <link rel="stylesheet" href="/css/main.css">
-</head>
-<body>
-  {{> header}}
+{{> header}}
 
-  <p>Locaiton page</p>
-  <p>location name: {{locationName}}</p>
+<h3>Locaiton page</h3>
+<p>location name: {{locationName}}</p>
 
-  <div>
-    <h3>View Menus</h3>
-    <li><a href="/locations/{{locationName}}/menus/breakfast">Breakfast</a></li>
-    <li><a href="/locations/{{locationName}}/menus/lunch">Lunch</a></li>
-    <li><a href="/locations/{{locationName}}/menus/dinner">Dinner</a></li>
-  </div>
+{{> locationSidebar}}
 
-  <h3><a href="/locations/{{locationName}}/photos">View Photos</a></h3>
-
-  {{> footer}}
-</body>
-</html>
+{{> footer}}
