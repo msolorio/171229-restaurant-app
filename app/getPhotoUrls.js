@@ -39,7 +39,6 @@ function getPhotoInfoById(location, photoId) {
 }
 
 module.exports = {
-  getPhotoUrlsByLocation,
   getPhotosInfo,
   getPhotoInfoById
 };
