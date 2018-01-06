@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "./node_modules/.bin/nodemon --exec \"npm test\"",
     "start": "node server/server.js",
     "start:dev": "./node_modules/.bin/nodemon server/server.js -e js,hbs"
   },
@@ -15,6 +16,7 @@
     "hbs": "^4.0.1"
   },
   "devDependencies": {
+    "jest": "^22.0.4",
     "nodemon": "^1.14.6"
   }
 }
