@@ -1,9 +1,9 @@
 const express = require('express');
 const hbs = require('hbs');
-const configureViewEngine = require('./app/configureViewEngine');
-const serveStatic = require('./app/serveStatic');
-const logger = require('./middleware/logger');
-const indexRouter = require('./routes');
+const configureViewEngine = require('../app/configureViewEngine');
+const serveStatic = require('../app/serveStatic');
+const logger = require('../middleware/logger');
+const indexRouter = require('../routes');
 
 const app = express();
 
