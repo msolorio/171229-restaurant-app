@@ -7,24 +7,42 @@ const indexRouter = require('../routes');
 
 const app = express();
 
-function init() {
-  configureViewEngine(app, hbs);
+configureViewEngine(app, hbs);
 
-  serveStatic(app);
+serveStatic(app);
 
-  app.use(logger);
+app.use(logger);
 
-  app.use(indexRouter);
-};
+app.use(indexRouter);
 
-init();
+function CreateServer(app, PORT = 3003) {
+  return {
+    startServer: () => {
+      return new Promise((resolve, reject) => {
+        server = app.listen(PORT, () => {
+          console.log(`server listening on port ${PORT}`);
+          resolve();
+        });
+      })
+    },
 
-// if file is run directly start server
-// wont start server for unit tests
-if (require.main === module) {
-  app.listen(3001, () => {
-    console.log('your app is listening on port 3001');
-  });
+    closeServer: () => {
+      return new Promise((resolve, reject) => {
+        server.close(() => {
+          console.log(`server closed on port ${PORT}`);
+          resolve();
+        });
+      });
+    }
+  }
 }
 
-module.exports = { app, init };
+let server = new CreateServer(app, 3003);
+
+// check if file is run directly
+// server started manually for unit tests
+if (require.main === module) {
+  server.startServer();
+}
+
+module.exports = { app, server, CreateServer };

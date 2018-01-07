@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "mocha **/**.spec.js",
     "test:watch": "./node_modules/.bin/nodemon --exec \"npm test\"",
     "start": "node server/server.js",
     "start:dev": "./node_modules/.bin/nodemon server/server.js -e js,hbs"
@@ -12,11 +12,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "deasync": "^0.1.12",
     "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
     "hbs": "^4.0.1"
   },
   "devDependencies": {
-    "jest": "^22.0.4",
-    "nodemon": "^1.14.6"
+    "expect": "^22.0.3",
+    "mocha": "^4.1.0",
+    "nodemon": "^1.14.6",
+    "supertest": "^3.0.0"
   }
 }

@@ -1,13 +1,16 @@
+const deasync = require('deasync');
+
 const partialDirectories = [
-  `${__dirname}/../../views/partials/location_content`,
-  `${__dirname}/../../views/partials/menu_content/zanzibar`,
-  `${__dirname}/../../views/partials/menu_content/zurich`,
-  `${__dirname}/../../views/partials/menu_content/zacatecas`,
-  `${__dirname}/../../views/partials/menu_content/menu_items`,
-  `${__dirname}/../../views/partials`
+  `views/partials/location_content`,
+  `views/partials/menu_content/zanzibar`,
+  `views/partials/menu_content/zurich`,
+  `views/partials/menu_content/zacatecas`,
+  `views/partials/menu_content/menu_items`,
+  `views/partials`
 ];
 
 module.exports = function registerPartials(hbs) {
+  hbs.registerPartials = deasync(hbs.registerPartials);
   partialDirectories.forEach((directory) => {
     hbs.registerPartials(directory);
   });
