@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha **/**.spec.js",
+    "test": "jest",
     "test:watch": "./node_modules/.bin/nodemon --exec \"npm test\"",
     "start": "node server/server.js",
     "start:dev": "./node_modules/.bin/nodemon server/server.js -e js,hbs"
@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "expect": "^22.0.3",
-    "mocha": "^4.1.0",
+    "jest": "^22.0.4",
     "nodemon": "^1.14.6",
     "supertest": "^3.0.0"
   }

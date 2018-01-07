@@ -4,7 +4,7 @@ const { app, CreateServer } = require('../server/server');
 const standardRouteTest = require('../testUtils/standardRouteTest');
 const redirectTest = require('../testUtils/redirectTest');
 
-describe('indexRouter', () => {
+describe('locationsRouter', () => {
   let server;
 
   beforeEach(() => {
@@ -16,9 +16,11 @@ describe('indexRouter', () => {
     server.closeServer();
   });
 
-  standardRouteTest(app, '/');
+  standardRouteTest(app, '/locations/zanzibar');
 
-  standardRouteTest(app, '/about');
+  standardRouteTest(app, '/locations/zurich');
 
-  redirectTest(app, '/asdf');
+  standardRouteTest(app, '/locations/zacatecas');
+
+  redirectTest(app, '/locations/asdf');
 });
