@@ -16,11 +16,15 @@ app.use(logger);
 app.use(indexRouter);
 
 function CreateServer(app, PORT = 3003) {
+  let server;
+
   return {
-    startServer: () => {
+    startServer: (message) => {
       return new Promise((resolve, reject) => {
         server = app.listen(PORT, () => {
-          console.log(`server listening on port ${PORT}`);
+          if (message) {
+            console.log(`Your server is listening on port: ${PORT}`);
+          }
           resolve();
         });
       })
@@ -29,7 +33,6 @@ function CreateServer(app, PORT = 3003) {
     closeServer: () => {
       return new Promise((resolve, reject) => {
         server.close(() => {
-          console.log(`server closed on port ${PORT}`);
           resolve();
         });
       });
@@ -37,12 +40,12 @@ function CreateServer(app, PORT = 3003) {
   }
 }
 
-let server = new CreateServer(app, 3003);
 
 // check if file is run directly
 // server started manually for unit tests
 if (require.main === module) {
-  server.startServer();
+  let server = new CreateServer(app, 3000);
+  server.startServer(true);
 }
 
-module.exports = { app, server, CreateServer };
+module.exports = { app, CreateServer };
