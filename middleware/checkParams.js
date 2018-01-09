@@ -18,6 +18,7 @@ function checkMenuParams(req, res, next) {
 }
 
 module.exports = {
+  checkParams,
   checkLocationParams,
   checkMenuParams
 };
