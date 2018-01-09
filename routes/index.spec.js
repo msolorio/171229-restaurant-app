@@ -1,7 +1,7 @@
 const request = require('supertest');
 const expect = require('expect');
 const { app, CreateServer } = require('../server/server');
-const standardRouteTest = require('../testUtils/standardRouteTest');
+const { standardRouteTest } = require('../testUtils/standardRouteTest');
 const redirectTest = require('../testUtils/redirectTest');
 
 describe('indexRouter', () => {
@@ -16,9 +16,7 @@ describe('indexRouter', () => {
     server.closeServer();
   });
 
-  standardRouteTest(app, '/');
-
-  standardRouteTest(app, '/about');
-
+  standardRouteTest(app, '/', 'home');
+  standardRouteTest(app, '/about', 'about');
   redirectTest(app, '/asdf');
 });
