@@ -1,8 +1,9 @@
 const request = require('supertest');
 const expect = require('expect');
 const { app, CreateServer } = require('../server/server');
-const standardRouteTest = require('../testUtils/standardRouteTest');
 const redirectTest = require('../testUtils/redirectTest');
+const { standardLocationsRouteTest } = require('../testUtils/standardRouteTest');
+const checkHandlebarsParams = require('../testUtils/checkHandlebarsParams');
 
 describe('locationsRouter', () => {
   let server;
@@ -16,11 +17,12 @@ describe('locationsRouter', () => {
     server.closeServer();
   });
 
-  standardRouteTest(app, '/locations/zanzibar');
-
-  standardRouteTest(app, '/locations/zurich');
-
-  standardRouteTest(app, '/locations/zacatecas');
-
+  standardLocationsRouteTest(app, '/locations/zanzibar');
+  standardLocationsRouteTest(app, '/locations/zurich');
+  standardLocationsRouteTest(app, '/locations/zacatecas');
   redirectTest(app, '/locations/asdf');
+  checkHandlebarsParams(app, '/locations/zanzibar', 'locations', {
+    locationName: 'zanzibar',
+    locationContent: () => 'location_zanzibar'
+  });
 });
