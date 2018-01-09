@@ -1,12 +1,13 @@
 const request = require('supertest');
 const expect = require('expect');
-const { app, CreateServer } = require('../server/server');
+const { app, CreateServer, init } = require('../server/server');
 const redirectTest = require('../testUtils/redirectTest');
 const { standardLocationsRouteTest } = require('../testUtils/standardRouteTest');
 const checkHandlebarsParams = require('../testUtils/checkHandlebarsParams');
 
 describe('locationsRouter', () => {
   let server;
+  init();
 
   beforeEach(() => {
     server = new CreateServer(app);

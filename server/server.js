@@ -7,13 +7,15 @@ const indexRouter = require('../routes');
 
 const app = express();
 
-configureViewEngine(app, hbs);
+function init() {
+  configureViewEngine(app, hbs);
 
-serveStatic(app);
+  serveStatic(app);
 
-app.use(logger);
+  app.use(logger);
 
-app.use(indexRouter);
+  app.use(indexRouter);
+}
 
 function CreateServer(app, PORT = 3003) {
   let server;
@@ -40,12 +42,12 @@ function CreateServer(app, PORT = 3003) {
   }
 }
 
-
 // check if file is run directly
 // server started manually for unit tests
 if (require.main === module) {
+  init();
   let server = new CreateServer(app, 3000);
   server.startServer(true);
 }
 
-module.exports = { app, CreateServer };
+module.exports = { app, CreateServer, init };
