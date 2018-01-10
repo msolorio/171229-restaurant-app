@@ -5,9 +5,7 @@ module.exports = function(req, res, next) {
   const log = `[${date}] "${req.method} ${req.path}"`
   console.log(log);
 
-  fs.appendFile('server.log', `${log}\n`, (error) => {
-    if (error) throw error;
-  });
+  fs.appendFileSync('server.log', `${log}\n`);
 
   next();
 }
