@@ -9,6 +9,9 @@ const partialDirectories = [
   `views/partials`
 ];
 
+// registerPartials is async by default
+// we make synchronous and then register our partials
+// allowing the app to be unit tested
 module.exports = function registerPartials(hbs) {
   hbs.registerPartials = deasync(hbs.registerPartials);
   partialDirectories.forEach((directory) => {

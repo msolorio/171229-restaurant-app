@@ -1,8 +1,8 @@
 const logger = require('./logger');
+
 jest.mock('fs', () => {
   return { appendFileSync: jest.fn() };
 });
-
 const fs = require('fs');
 
 let req;
