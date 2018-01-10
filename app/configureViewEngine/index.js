@@ -1,8 +1,8 @@
 const registerPartials = require('./registerPartials');
-const registerHelper = require('./registerHelpers');
+const registerHelpers = require('./registerHelpers');
 
 function configureViewEngine(app, hbs) {
-  registerHelper(hbs);
+  registerHelpers(hbs);
   registerPartials(hbs);
   app.set('view engine', 'hbs');
 }
