@@ -19,6 +19,16 @@ jest.mock('../routes', () => {
 });
 const indexRouter = require('../routes');
 
+jest.mock('../app/configureViewEngine/registerHelpers', () => {
+  return { helpers: 'fakeHelpers' };
+});
+const { helpers } = require('../app/configureViewEngine/registerHelpers');
+
+jest.mock('../app/configureViewEngine/registerPartials', () => {
+  return { partialDirectories: 'fakePartialDirectories' };
+});
+const { partialDirectories } = require('../app/configureViewEngine/registerPartials');
+
 app.use = jest.fn();
 
 describe('init', () => {
@@ -33,7 +43,7 @@ describe('init', () => {
 
   it('should call configureViewEngine with app and hbs', () => {
     expect(configureViewEngine).toHaveBeenCalled();
-    expect(configureViewEngine).toHaveBeenCalledWith(app, hbs);
+    expect(configureViewEngine).toHaveBeenCalledWith(app, hbs, helpers, partialDirectories);
   });
 
   it('should call serveStatic with app', () => {
