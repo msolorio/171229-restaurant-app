@@ -1,5 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
+const { helpers } = require('../app/configureViewEngine/registerHelpers');
+const { partialDirectories } = require('../app/configureViewEngine/registerPartials');
 const configureViewEngine = require('../app/configureViewEngine');
 const serveStatic = require('../app/serveStatic');
 const logger = require('../middleware/logger');
@@ -8,7 +10,7 @@ const indexRouter = require('../routes');
 const app = express();
 
 function init() {
-  configureViewEngine(app, hbs);
+  configureViewEngine(app, hbs, helpers, partialDirectories);
 
   serveStatic(app);
 
