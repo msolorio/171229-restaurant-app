@@ -19,7 +19,7 @@ function init() {
   app.use(indexRouter);
 }
 
-function CreateServer(app, PORT = 3003) {
+function CreateServer(app, PORT = 4002) {
   let server;
 
   return {
