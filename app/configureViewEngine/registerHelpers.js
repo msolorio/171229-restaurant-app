@@ -7,8 +7,14 @@ const helpers = [{
   method: getRestaurantName
 }];
 
-module.exports = function registerHelpers(hbs) {
+function registerHelpers(hbs, helpers) {
   helpers.forEach((helper) => {
     hbs.registerHelper(helper.name, helper.method);
   });
 }
+
+module.exports = {
+  helpers,
+  registerHelpers,
+  getRestaurantName
+};

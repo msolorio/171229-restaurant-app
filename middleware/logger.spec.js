@@ -5,21 +5,22 @@ jest.mock('fs', () => {
 });
 const fs = require('fs');
 
-let req;
-let next;
+let req = {
+  method: 'GET',
+  path: '/doggy'
+};
+
+let next = jest.fn();
+
+global.console = {
+  log: jest.fn()
+};
 
 describe('logger', () => {
   beforeEach(() => {
-    req = {
-      method: 'GET',
-      path: '/doggy'
-    };
-
-    global.console = {
-      log: jest.fn()
-    };
-
-    next = jest.fn();
+    fs.appendFileSync.mockClear();
+    next.mockClear();
+    global.console.log.mockClear();
   });
 
   it('should call fs.appendFile with proper argument', () => {
