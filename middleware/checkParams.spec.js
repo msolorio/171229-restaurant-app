@@ -5,15 +5,30 @@ const {
   checkMenuParams
 } = require('./checkParams');
 
+
+let fakeNext = jest.fn();
+let fakeRes = { redirect: jest.fn() };
+let fakeValidParams = [1, 2, 3, 4];
+let fakeValidParam = 3;
+let fakeInvalidParam = 10;
+
 describe('checkParams', () => {
+  beforeEach(() => {
+    fakeNext.mockClear();
+    fakeRes.redirect.mockClear();
+  });
+
   it('should call next if given param is valid', () => {
-    let fakeNext = jest.fn();
-    let fakeRes = { redirect: jest.fn() };
-    let fakeValidParams = [1, 2, 3, 4];
-    let fakeGivenParam = 3;
-    checkParams(fakeValidParams, fakeGivenParam, fakeRes, fakeNext);
+    checkParams(fakeValidParams, fakeValidParam, fakeRes, fakeNext);
 
     expect(fakeNext).toHaveBeenCalledTimes(1);
+  });
+
+  it('should call res.redirect if param is not valid', () => {
+    checkParams(fakeValidParams, fakeInvalidParam, fakeRes, fakeNext);
+
+    expect(fakeRes.redirect).toHaveBeenCalledTimes(1);
+    expect(fakeRes.redirect).toHaveBeenCalledWith('/');
   });
 });
 
