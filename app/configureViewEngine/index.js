@@ -1,6 +1,5 @@
-const { registerPartials, partialDirectories } = require('./registerPartials');
+const { registerPartials } = require('./registerPartials');
 const { registerHelpers, helpers } = require('./registerHelpers');
-
 
 function configureViewEngine(app, hbs, helper, partialDirectories) {
   registerHelpers(hbs, helpers);

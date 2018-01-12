@@ -1,7 +1,7 @@
 const express = require('express');
 const hbs = require('hbs');
 const { helpers } = require('../app/configureViewEngine/registerHelpers');
-const { partialDirectories } = require('../app/configureViewEngine/registerPartials');
+const partialDirectories = require('../app/configureViewEngine/partialDirectories');
 const configureViewEngine = require('../app/configureViewEngine');
 const serveStatic = require('../app/serveStatic');
 const logger = require('../middleware/logger');
@@ -19,7 +19,7 @@ function init() {
   app.use(indexRouter);
 }
 
-function CreateServer(app, PORT = 4002) {
+function CreateServer(app, PORT = 3003) {
   let server;
 
   return {
