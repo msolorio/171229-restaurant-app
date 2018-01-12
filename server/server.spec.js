@@ -24,10 +24,10 @@ jest.mock('../app/configureViewEngine/registerHelpers', () => {
 });
 const { helpers } = require('../app/configureViewEngine/registerHelpers');
 
-jest.mock('../app/configureViewEngine/registerPartials', () => {
-  return { partialDirectories: 'fakePartialDirectories' };
+jest.mock('../app/configureViewEngine/partialDirectories', () => {
+  return 'fakePartialDirectories';
 });
-const { partialDirectories } = require('../app/configureViewEngine/registerPartials');
+const partialDirectories = require('../app/configureViewEngine/partialDirectories');
 
 app.use = jest.fn();
 
